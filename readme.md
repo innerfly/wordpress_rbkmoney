@@ -1,5 +1,6 @@
 Платежный плагин RBK Money для Wordpress + WP e-Commerce
 
+Проверено на Wordpress 3.6.1, WP e-Commerce 3.8.12.1
 
 Установка
 ---------
@@ -20,6 +21,11 @@
 -------------------------------------------------------------------------
 
 In English:
+
+Payment plugin for Wordpress + WP e-Commerce. Allow to accept payments via RBK Money payment system
+
+Tested with Wordpress 3.6.1, WP e-Commerce 3.8.12.1
+
 
 Installation
 ------------
