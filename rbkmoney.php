@@ -64,7 +64,7 @@ class wpsc_merchant_rbkmoney extends wpsc_merchant {
   function process_gateway_notification() {
 
     // checking for allowed RBK Money server
-    $allowed_ip = array('46.38.182.208', '46.38.182.209', '46.38.182.210', '89.111.188.128', '89.111.188.129', '94.236.107.4', '94.236.107.1', '95.215.102.166');
+    $allowed_ip = array('89.111.188.128', '195.122.9.148');
     if (!in_array($_SERVER['REMOTE_ADDR'], $allowed_ip)) {
       exit("IP address {$_SERVER['REMOTE_ADDR']} is not allowed");
     }
