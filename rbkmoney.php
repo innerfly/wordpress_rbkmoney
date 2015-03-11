@@ -41,7 +41,7 @@ class wpsc_merchant_rbkmoney extends wpsc_merchant {
     $price = str_replace('.', ',', $form['recipientAmount']); // use comma as sum separator
     $hash_string = $form['eshopId'] . "::" . $price . "::" . $form['recipientCurrency'] . "::" . $form['user_email'] . "::" . $form['serviceName'] . "::" . $form['orderId'] . "::::" . get_option('rbkmoney_secretKey');
     $form['hash'] = md5($hash_string);
-    
+
     $output = "<html>\n<head>\n<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\"/>\n</head>\n<body>\n";
     $output .= "<form id=\"paymentform\" action=\"https://rbkmoney.ru/acceptpurchase.aspx\" name=\"paymentform\" method=\"post\">\n";
 
@@ -69,7 +69,7 @@ class wpsc_merchant_rbkmoney extends wpsc_merchant {
       exit("IP address {$_SERVER['REMOTE_ADDR']} is not allowed");
     }
 
-    extract(stripslashes_deep($_POST));
+    extract($_POST);
 
     $control_hash = $eshopId . "::" . $orderId . "::" . $serviceName . "::" . $eshopAccount . "::" . $recipientAmount . "::" . $recipientCurrency . "::" . $paymentStatus . "::" . $userName . '::' . $userEmail . '::' . $paymentData . '::' . get_option('rbkmoney_secretKey');
 
