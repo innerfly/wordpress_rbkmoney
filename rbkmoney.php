@@ -32,7 +32,7 @@ class wpsc_merchant_rbkmoney extends wpsc_merchant {
     $form['user_email'] = $this->cart_data['email_address'];
     $form['serviceName'] = $serviceName;
     $form['recipientAmount'] = number_format(floatval($this->cart_data['total_price']), 2, '.', '');
-    $form['recipientCurrency'] = $this->cart_data['store_currency'];
+    $form['recipientCurrency'] = ($this->cart_data['store_currency'] == 'RUB') ? 'RUR' : $this->cart_data['store_currency'];
     $form['successUrl'] = (get_option('rbkmoney_successUrl')) ? get_option('rbkmoney_successUrl') . '&sessionid=' . $this->cart_data['session_id'] : get_option('home') . "/?page_id=7";
     $form['failUrl'] = (get_option('rbkmoney_failUrl')) ? get_option('rbkmoney_failUrl') . '&sessionid=' . $this->cart_data['session_id'] : get_option('home') . "/?page_id=7";
 
@@ -41,7 +41,7 @@ class wpsc_merchant_rbkmoney extends wpsc_merchant {
     $price = str_replace('.', ',', $form['recipientAmount']); // use comma as sum separator
     $hash_string = $form['eshopId'] . "::" . $price . "::" . $form['recipientCurrency'] . "::" . $form['user_email'] . "::" . $form['serviceName'] . "::" . $form['orderId'] . "::::" . get_option('rbkmoney_secretKey');
     $form['hash'] = md5($hash_string);
-
+    
     $output = "<html>\n<head>\n<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\"/>\n</head>\n<body>\n";
     $output .= "<form id=\"paymentform\" action=\"https://rbkmoney.ru/acceptpurchase.aspx\" name=\"paymentform\" method=\"post\">\n";
 
